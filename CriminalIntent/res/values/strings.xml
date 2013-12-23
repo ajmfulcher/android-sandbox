@@ -17,5 +17,6 @@
     <string name="delete_crime">Delete</string>
     <string name="empty_view_message">There are no crimes</string>
     <string name="add_first_record_label">Add Record</string>
+    <string name="take">Take!</string>
 
 </resources>
