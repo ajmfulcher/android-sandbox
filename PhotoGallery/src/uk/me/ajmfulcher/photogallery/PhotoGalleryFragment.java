@@ -8,13 +8,14 @@ import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,12 +24,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
-public class PhotoGalleryFragment extends Fragment {
+public class PhotoGalleryFragment extends VisibleFragment {
 	
 	private static final String TAG = "PhotoGalleryFragment";
 	
@@ -38,6 +41,7 @@ public class PhotoGalleryFragment extends Fragment {
 	
 	private Integer flickrPage = 0;
 	private Boolean mLoading = true;
+	private boolean mAppendPhotos = false;
 	private int mPreviousTotal = 0;
 	
 	
@@ -79,6 +83,7 @@ public class PhotoGalleryFragment extends Fragment {
 				}
 				final int lastItem = firstVisibleItem + visibleItemCount;
 				if (!mLoading && lastItem == totalItemCount) {
+					mAppendPhotos = true;
 					new FetchItemsTask().execute(flickrPage + 1);
 					mLoading = true;
 				}
@@ -91,6 +96,22 @@ public class PhotoGalleryFragment extends Fragment {
 		});
 		
 		setupAdapter();
+		
+		mGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> gridView, View view, int pos,
+					long id) {
+				GalleryItem item = mItems.get(pos);
+				
+				Uri photoPageUri = Uri.parse(item.getPhotoPageUrl());
+				Intent i = new Intent(getActivity(),PhotoPageActivity.class);
+				i.setData(photoPageUri);
+				
+				startActivity(i);
+			}
+			
+		});
 		
 		return v;
 	}
@@ -127,6 +148,7 @@ public class PhotoGalleryFragment extends Fragment {
 	}
 	
 	@Override
+	@TargetApi(11)
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.menu_item_search:
@@ -140,8 +162,28 @@ public class PhotoGalleryFragment extends Fragment {
 					mItems = null;
 					updateItems();
 				return true;
+			case R.id.menu_item_toggle_polling:
+				boolean shouldStartAlarm = !PollService.isServiceAlarmOn(getActivity());
+				PollService.setServiceAlarm(getActivity(), shouldStartAlarm);
+				
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+					getActivity().invalidateOptionsMenu();
+				}
+				
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	public void onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		
+		MenuItem toggleItem = menu.findItem(R.id.menu_item_toggle_polling);
+		if (PollService.isServiceAlarmOn(getActivity())) {
+			toggleItem.setTitle(R.string.stop_polling);
+		} else {
+			toggleItem.setTitle(R.string.start_polling);
 		}
 	}
 	
@@ -191,7 +233,6 @@ public class PhotoGalleryFragment extends Fragment {
 					.getString(FlickrFetchr.PREF_SEARCH_QUERY, null);
 			
 			if (query != null) {
-				mItems = null;
 				return new FlickrFetchr().search(query);
 			} else {
 				return new FlickrFetchr().fetchItems(params[0]);
@@ -200,13 +241,14 @@ public class PhotoGalleryFragment extends Fragment {
 		
 		@Override
 		protected void onPostExecute(ArrayList<GalleryItem> items) {
-			if (mItems == null) {
-				mItems = items;
-				setupAdapter();
-			} else {
+			if (mAppendPhotos) {
 				mItems.addAll(items);
 				ArrayAdapter adapter = (ArrayAdapter) mGridView.getAdapter();
 				adapter.notifyDataSetChanged();
+				mAppendPhotos = false;
+			} else {
+				mItems = items;
+				setupAdapter();
 			}
 		}
 		
