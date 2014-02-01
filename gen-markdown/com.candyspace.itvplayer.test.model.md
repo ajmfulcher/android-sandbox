@@ -62,7 +62,7 @@ all > com.candyspace.itvplayer.test.model
    <th>Success rate</th> 
   </tr>  
   <tr> 
-   <td> <a href="PlayerOrchestratorTest.md">PlayerOrchestratorTest</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.model.PlayerOrchestratorTest.md">PlayerOrchestratorTest</a> </td> 
    <td>2</td> 
    <td>0</td> 
    <td>4.934s</td> 

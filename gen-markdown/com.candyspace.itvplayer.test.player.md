@@ -62,7 +62,7 @@ all > com.candyspace.itvplayer.test.player
    <th>Success rate</th> 
   </tr>  
   <tr> 
-   <td> <a href="NativePlayerTest.md">NativePlayerTest</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.player.NativePlayerTest.md">NativePlayerTest</a> </td> 
    <td>2</td> 
    <td>0</td> 
    <td>1.888s</td> 

@@ -62,14 +62,14 @@ all > com.candyspace.itvplayer.test.qos
    <th>Success rate</th> 
   </tr>  
   <tr> 
-   <td> <a href="QosEventTest.md">QosEventTest</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.qos.QosEventTest.md">QosEventTest</a> </td> 
    <td>1</td> 
    <td>0</td> 
    <td>0s</td> 
    <td>100%</td> 
   </tr> 
   <tr> 
-   <td> <a href="QosStatisticsTest.md">QosStatisticsTest</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.qos.QosStatisticsTest.md">QosStatisticsTest</a> </td> 
    <td>9</td> 
    <td>0</td> 
    <td>4.785s</td> 
