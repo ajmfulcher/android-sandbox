@@ -62,14 +62,14 @@ all > com.candyspace.itvplayer.test.connectivity
    <th>Success rate</th> 
   </tr>  
   <tr> 
-   <td> <a rel="nofollow">HttpGetPlayListTest</a> </td> 
+   <td> <a href="HttpGetPlayListTest.md">HttpGetPlayListTest</a> </td> 
    <td>9</td> 
    <td>0</td> 
    <td>20.183s</td> 
    <td>100%</td> 
   </tr> 
   <tr> 
-   <td> <a rel="nofollow">MockHttpGetPlayListTest</a> </td> 
+   <td> <a href="MockHttpGetPlayListTest.md">MockHttpGetPlayListTest</a> </td> 
    <td>3</td> 
    <td>0</td> 
    <td>5.361s</td> 

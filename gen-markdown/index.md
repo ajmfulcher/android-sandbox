@@ -70,28 +70,28 @@ Test results - Test Summary
    <td>100%</td> 
   </tr> 
   <tr> 
-   <td> <a rel="nofollow">com.candyspace.itvplayer.test.content</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.content.md">com.candyspace.itvplayer.test.content</a> </td> 
    <td>2</td> 
    <td>0</td> 
    <td>2.946s</td> 
    <td>100%</td> 
   </tr> 
   <tr> 
-   <td> <a rel="nofollow">com.candyspace.itvplayer.test.model</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.model.md">com.candyspace.itvplayer.test.model</a> </td> 
    <td>2</td> 
    <td>0</td> 
    <td>4.934s</td> 
    <td>100%</td> 
   </tr> 
   <tr> 
-   <td> <a rel="nofollow">com.candyspace.itvplayer.test.player</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.player.md">com.candyspace.itvplayer.test.player</a> </td> 
    <td>2</td> 
    <td>0</td> 
    <td>1.888s</td> 
    <td>100%</td> 
   </tr> 
   <tr> 
-   <td> <a rel="nofollow">com.candyspace.itvplayer.test.qos</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.qos.md">com.candyspace.itvplayer.test.qos</a> </td> 
    <td>10</td> 
    <td>0</td> 
    <td>4.785s</td> 
@@ -102,7 +102,13 @@ Test results - Test Summary
 
 ## Classes ##
 
-com.candyspace.itvplayer.test.connectivity.HttpGetPlayListTestcom.candyspace.itvplayer.test.connectivity.MockHttpGetPlayListTestcom.candyspace.itvplayer.test.content.PlayListContentTestcom.candyspace.itvplayer.test.model.PlayerOrchestratorTestcom.candyspace.itvplayer.test.player.NativePlayerTestcom.candyspace.itvplayer.test.qos.QosEventTestcom.candyspace.itvplayer.test.qos.QosStatisticsTest
+com.candyspace.itvplayer.test.connectivity.HttpGetPlayListTest
+com.candyspace.itvplayer.test.connectivity.MockHttpGetPlayListTest
+com.candyspace.itvplayer.test.content.PlayListContentTest
+com.candyspace.itvplayer.test.model.PlayerOrchestratorTest
+com.candyspace.itvplayer.test.player.NativePlayerTest
+com.candyspace.itvplayer.test.qos.QosEventTest
+com.candyspace.itvplayer.test.qos.QosStatisticsTest
 
 <table> 
  <thead> 

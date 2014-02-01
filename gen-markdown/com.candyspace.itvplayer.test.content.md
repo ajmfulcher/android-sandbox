@@ -62,7 +62,7 @@ all > com.candyspace.itvplayer.test.content
    <th>Success rate</th> 
   </tr>  
   <tr> 
-   <td> <a rel="nofollow">PlayListContentTest</a> </td> 
+   <td> <a href="PlayListContentTest.md">PlayListContentTest</a> </td> 
    <td>2</td> 
    <td>0</td> 
    <td>2.946s</td> 
