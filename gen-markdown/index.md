@@ -63,7 +63,7 @@ Test results - Test Summary
  </thead> 
  <tbody> 
   <tr> 
-   <td> <a rel="nofollow">com.candyspace.itvplayer.test.connectivity.md</a> </td> 
+   <td> <a href="com.candyspace.itvplayer.test.connectivity">com.candyspace.itvplayer.test.connectivity.md</a> </td> 
    <td>12</td> 
    <td>0</td> 
    <td>25.544s</td> 
